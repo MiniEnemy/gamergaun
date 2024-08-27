@@ -3,7 +3,7 @@ import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
 
 const Footer = () => {
   return (
-    <footer className="font-poppins bg-gray-900 text-gray-300 p-6">
+    <footer className="font-poppins bg-gray-900 text-gray-300 pt-6">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="mb-6 md:mb-0">
           <img src={Logo} alt="SastoBazar" className="h-16 mb-4 md:mb-0" />
