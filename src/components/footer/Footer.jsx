@@ -1,5 +1,6 @@
 import Logo from "../../assets/images/nobglogo.png";
 import { FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -14,8 +15,12 @@ const Footer = () => {
           <a href="#" className="hover:underline">Shop</a>
           <a href="#" className="hover:underline">About Us</a>
           <a href="#" className="hover:underline">Contact</a>
-          <a href="#" className="hover:underline">FAQ</a>
-        </div>
+          <NavLink to="/privacy" className="hover:underline">
+            Privacy
+          </NavLink>
+          <NavLink to="/Terms" className="hover:underline">
+            Terms&Condtion
+          </NavLink>
         <div className="flex space-x-4 mt-4 md:mt-0">
           <a href="#" aria-label="Facebook" className="text-gray-300 hover:text-gray-500">
             <FiFacebook className="h-5 w-5" />
@@ -37,8 +42,10 @@ const Footer = () => {
           <a href="#" className="hover:underline">Privacy Policy</a> | <a href="#" className="hover:underline">Terms of Service</a> | <a href="#" className="hover:underline">Refund Policy</a>
         </p>
       </div>
+      </div>
     </footer>
   );
 };
+
 
 export default Footer;
