@@ -10,11 +10,15 @@ const Footer = () => {
           <img src={Logo} alt="SastoBazar" className="h-16 mb-4 md:mb-0" />
           <p className="text-sm text-gray-400">Your one-stop shop for all your needs.</p>
         </div>
-        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
-          <a href="#" className="hover:underline">Home</a>
+        <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-10 w-[100%]">
+        <NavLink to="/App" className="hover:underline">
+            home
+          </NavLink>
           <a href="#" className="hover:underline">Shop</a>
-          <a href="#" className="hover:underline">About Us</a>
-          <a href="#" className="hover:underline">Contact</a>
+          <a href="#" className="hover:underline">AboutUs</a>
+          <NavLink to="/Contact" className="hover:underline">
+            Contact-us
+          </NavLink>
           <NavLink to="/privacy" className="hover:underline">
             Privacy
           </NavLink>
