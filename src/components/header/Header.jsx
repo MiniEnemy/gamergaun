@@ -1,4 +1,5 @@
 import Logo from "../../assets/images/nobglogo.png";
+import { NavLink } from "react-router-dom";
 import { FiSearch, FiHeart, FiShoppingCart } from "react-icons/fi";
 
 const Header = () => {
@@ -6,7 +7,9 @@ const Header = () => {
     <>
       <header className="font-poppins flex items-center justify-evenly p-4 bg-white-200">
         <div className="flex items-center">
+          <NavLink to="/" >
           <img src={Logo} alt="SastoBazar" className="h-20 w-full pr-2" />
+          </NavLink>
         </div>
         <div className="flex items-center justify-center w-2/5 relative">
           <input

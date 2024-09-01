@@ -11,22 +11,24 @@ const Footer = () => {
           <p className="text-sm text-gray-400">Your one-stop shop for all your needs.</p>
         </div>
         <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-10 w-[100%]">
-        <NavLink to="/App" className="hover:underline">
+        <NavLink to="/" className="hover:underline hover:text-orange-500">
             home
           </NavLink>
-          <a href="#" className="hover:underline">Shop</a>
-          <a href="#" className="hover:underline">AboutUs</a>
-          <NavLink to="/Contact" className="hover:underline">
+          <a href="#" className="hover:underline hover:text-orange-500">Shop</a>
+          <NavLink to="/Aboutus" className="hover:underline hover:text-orange-500">
+            About-US
+          </NavLink>
+          <NavLink to="/Contact" className="hover:underline hover:text-orange-500">
             Contact-us
           </NavLink>
-          <NavLink to="/privacy" className="hover:underline">
+          <NavLink to="/privacy" className="hover:underline hover:text-orange-500">
             Privacy
           </NavLink>
-          <NavLink to="/Terms" className="hover:underline">
+          <NavLink to="/Terms" className="hover:underline hover:text-orange-500">
             Terms&Condtion
           </NavLink>
         <div className="flex space-x-4 mt-4 md:mt-0">
-          <a href="#" aria-label="Facebook" className="text-gray-300 hover:text-gray-500">
+          <a href="https://www.facebook.com/ target=_blank " aria-label="Facebook" className="text-gray-300 hover:text-gray-500">
             <FiFacebook className="h-5 w-5" />
           </a>
           <a href="#" aria-label="Twitter" className="text-gray-300 hover:text-gray-500">

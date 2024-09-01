@@ -7,6 +7,7 @@ const Register = () => {
       <h2>Create Your Account</h2>
       <input type="text" className="mt-6 px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Enter your Name"  />
       <input type="email" className="mt-6 px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Enter your Email"  />
+      <input type="text" className="mt-6  px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Enter Your Address"  />
       <input type="number" className="mt-6  px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Enter your PhoneNumber"  />
       <input type="password" className="mt-6  px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Enter your Password"  />
       <input type="password" className="mt-6  px-2 py-3 border border-gray-300 rounded-md w-full focus:ring-black text-sm focus:outline-none focus:ring focus:ring-black-200..." placeholder="Re-Enter your Password"  />
