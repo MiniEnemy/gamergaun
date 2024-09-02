@@ -11,6 +11,7 @@ import Terms from './helpers/t&c/Terms.jsx';
 import PageNotFound from './pages/notfound/pagenotfound.jsx';
 import Aboutus from './pages/aboutus/AboutUs.jsx';
 import LearnMore from '../src/pages/learnmore/learnmore.jsx';
+import { useEffect } from 'react';
 
 
 

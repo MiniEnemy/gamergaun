@@ -1,4 +1,4 @@
-import firstBanner from "../../assets/images/firstBanner.jpg";
+import first from '../../assets/images/mousebanner2.png';
 import thirdBanner from "../../assets/images/thirdBanner.jpg";
 import fourthBanner from "../../assets/images/fourthBanner.jpg";
 
@@ -7,7 +7,7 @@ export const items = [
     id: 1,
     title: "Bannerone",
     visit: "/",
-    image: firstBanner,
+    image: first,
   },
   {
     id: 2,
