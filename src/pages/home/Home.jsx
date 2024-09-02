@@ -1,5 +1,5 @@
 import React from 'react'
-import BannerPage from '../common/banner/BannerPage'
+import BannerPage from '../../pages/banner/BannerPage';
 
 const Home = () => {
   return (

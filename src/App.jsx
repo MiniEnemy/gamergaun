@@ -1,6 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Header from './components/header/Header';
-import BannerPage from './pages/common/banner/BannerPage.jsx';
 import Footer from './components/footer/Footer';
 import TopHeader from './components/topheader/TopHeader';
 import Home from './pages/home/Home';
@@ -10,7 +9,10 @@ import Contact from './helpers/contact/Contact.jsx';
 import Privacy from './helpers/privacy/Privacy.jsx';
 import Terms from './helpers/t&c/Terms.jsx';
 import PageNotFound from './pages/notfound/pagenotfound.jsx';
-import Aboutus from './pages/aboutus/AboutUs.jsx'
+import Aboutus from './pages/aboutus/AboutUs.jsx';
+import LearnMore from '../src/pages/learnmore/learnmore.jsx';
+
+
 
 function App() {
   return <>
@@ -26,6 +28,9 @@ function App() {
       <Route exact path="/Terms" element={<Terms />} />
       <Route exact path="*" element={<PageNotFound />} />
       <Route exact path="/Aboutus" element={<Aboutus />} />
+      <Route exact path="/more-info" element={<LearnMore />
+} />
+
       
       
     </Routes>

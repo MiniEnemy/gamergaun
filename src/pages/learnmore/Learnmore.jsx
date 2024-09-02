@@ -1,6 +1,6 @@
 import React from "react";
-import CommonPages from "../commonPages/CommonPages";
-import aboutImg from "../../assets/images/aboutus.png"; 
+import CommonPages from "../common/CommonPages";
+import aboutImg from "../../assets/images/about.jpg"; 
 // Use another Image
 
 const LearnMore = () => {
@@ -14,7 +14,7 @@ const LearnMore = () => {
         buttonText="Contact Us"
         visit="/more-info"
         imageAbout={aboutImg}
-        // use another image
+        
       />
     </>
   );
