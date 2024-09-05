@@ -1,23 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const ProductCard = ({ product }) => {
+const Productcard = ({ product }) => {
   return (
-    <>
-      <div className="border p-4 rounded-lg shadow-md">
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-full h-48 object-cover mb-4 transform transition-transform duration-500 hover:translate-y-[-10px] hover:scale"
-        />
-        <h2 className="text-lg font-medium">{product.title}</h2>
-        <p className="text-gray-500 pb-4">${product.price}</p>
-        <Link to={`/productview/${product.id}`} className="mt-4 p-2 text-white rounded bg-purple-500 hover:bg-purple-600">
-          View Details
-        </Link>
-      </div>
-    </>
+    <div className="border p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+      <img
+        src={product.image}
+        alt={`Image of ${product.title}`}
+        className="w-full h-48 object-cover mb-4 transition-transform duration-300 transform hover:-translate-y-2 hover:scale-105"
+      />
+      <h2 className="text-lg font-medium mb-2">{product.title}</h2>
+      <p className="text-gray-500 mb-4">$ {product.price}</p>
+      <Link
+        to={`/product-view/${product.id}`}
+        className="block text-center px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600 transition-colors duration-300"
+      >
+        View Details
+      </Link>
+    </div>
   );
 };
 
-export default ProductCard;
+export default Productcard;
