@@ -52,6 +52,7 @@ function App() {
         <Route exact path="/more-info" element={<LearnMore />} />
         <Route exact path="/Productview/:id" element={<Productview isLoading={isLoading} product={isLoading} products={products} />} />
         <Route path="*" element={<PageNotFound />} />
+        {/* nhk */}
       </Routes>
       <Footer />
     </Router>
