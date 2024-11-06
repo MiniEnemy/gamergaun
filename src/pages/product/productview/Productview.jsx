@@ -1,20 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const Productview = ({ products, isLoading }) => {
+const ProductView = () => {
   const [singleProduct, setSingleProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    if (id && products) {
-      const selectedProduct = products.find((item) => item.id === Number(id));
-      setSingleProduct(selectedProduct);
-    }
-  }, [id, products]);
+    const fetchProduct = async () => {
+      if (id) {
+        setIsLoading(true);
+        try {
+          const response = await fetch(`https://ggapi-production.up.railway.app/api/products/${id}`);
+          const data = await response.json();
+          setSingleProduct(data); // Set the product data directly
+        } catch (error) {
+          console.error("Error fetching product:", error);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
 
   if (isLoading) {
     return (
-      <div className="text-center mt-16">
+      <div className="text-center">
         <div role="status">
           <svg
             aria-hidden="true"
@@ -39,71 +52,79 @@ const Productview = ({ products, isLoading }) => {
   }
 
   if (!singleProduct) {
-    return (
-      <div className="text-center mt-16">
-        <h1>No Data Found</h1>
-      </div>
-    );
+    return <h1>No Data Found</h1>;
   }
 
   return (
     <div className="font-poppins container mx-auto px-8 py-8 bg-gray-50">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* Left Side - Product Image */}
-        <div className="mb-4 bg-white border flex justify-center items-center">
+        <div className="mb-4 bg-[#FFFFFF] border flex justify-center items-center">
           <div className="relative max-w-md mx-auto overflow-hidden">
             <img
               src={singleProduct.image}
-              alt={singleProduct.title}
-              className="w-full h-auto rounded object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
+              alt={singleProduct.name}
+              className="w-full h-max rounded object-cover cursor-pointer transition-transform duration-300 hover:scale-105"
             />
-          </div>
-        </div>
-
-        {/* Right Side - Product Details */}
-        <div className="px-4">
-          <h2 className="text-2xl font-bold text-gray-700 mb-2">
-            {singleProduct.title}
-          </h2>
-
-          <div className="mb-4">
-            <span className="text-3xl text-orange-500 font-semibold">
-              Rs. {singleProduct.price}
-            </span>
-            <hr className="border-b border-dotted w-3/5 border-gray-400 mt-2" />
-          </div>
-
-          {/* Quantity Control */}
-          <div className="flex items-center mt-3 text-gray-700">
-            <span className="mr-2">Qty:</span>
-            <div className="flex">
-              <button className="px-2 py-1 bg-gray-200 rounded-l">-</button>
-              <input
-                type="text"
-                className="w-12 px-2 py-1 text-center focus:outline-none bg-gray-100"
-                min={1}
-                defaultValue={1}
+            <div className="absolute inset-0 hidden md:flex justify-center items-center bg-black bg-opacity-10 rounded-md cursor-zoom-in">
+              <img
+                src={singleProduct.image}
+                alt={singleProduct.name}
+                className="w-full h-auto rounded-md"
               />
-              <button className="px-2 py-1 bg-gray-200 rounded-r">+</button>
             </div>
           </div>
+        </div>
+        <div className="px-4">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-700 mb-2">
+              {singleProduct.name}
+            </h2>
 
-          {/* Description */}
-          <div className="mb-4 mt-5">
-            <p className="text-base text-gray-700">
-              {singleProduct.description}
-            </p>
-            <hr className="border-b border-dotted w-3/5 border-gray-400 mt-2" />
-          </div>
+            <div className="mb-4">
+              <span className="text-3xl text-red-500 font-semibold">
+                Rs. {singleProduct.price}
+              </span>
+              <hr className="border-b border-dotted w-3/5 border-gray-400 mt-2" />
+            </div>
 
-          {/* Action Buttons */}
-          <div className="mb-4 flex space-x-2">
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded w-64">
-              Add to Cart
-            </button>
-            <button className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded w-64">
-              Buy Now
-            </button>
+            {/* Stock Info */}
+            <div className="mb-4">
+              <p className="text-gray-600">
+                Stock: {singleProduct.stock > 0 ? `${singleProduct.stock} units` : 'Out of Stock'}
+              </p>
+              <p className="text-gray-600">Rating: {singleProduct.rating} / 5</p>
+              <p className="text-gray-600">Category: {singleProduct.category}</p>
+              <p className="text-gray-600">Brand: {singleProduct.company}</p>
+            </div>
+
+            <div className="flex items-center mt-3 text-gray-700">
+              <span className="mr-2">Qty:</span>
+              <div className="flex">
+                <button className="px-2 py-1 bg-gray-200 rounded-l">-</button>
+                <input
+                  type="text"
+                  className="w-12 px-2 py-1 text-center focus:outline-none bg-gray-100"
+                  min={1}
+                  defaultValue={1}
+                />
+                <button className="px-2 py-1 bg-gray-200 rounded-r">+</button>
+              </div>
+            </div>
+
+            <div className="mb-4 flex space-x-2 mt-6">
+              <button 
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-64"
+                disabled={singleProduct.stock === 0}
+              >
+                Add to Cart
+              </button>
+              <button 
+                className="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-4 rounded w-64"
+                disabled={singleProduct.stock === 0}
+              >
+                Buy Now
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -111,4 +132,4 @@ const Productview = ({ products, isLoading }) => {
   );
 };
 
-export default Productview;
+export default ProductView;

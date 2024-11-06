@@ -1,48 +1,95 @@
 import { NavLink } from "react-router-dom";
-import Customer from "../../assets/images/Customer-care.png";
-import { MdLocationPin } from "react-icons/md";
+import { MdLocationPin, MdEmail } from "react-icons/md";
 import { FaPhoneAlt } from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+
+const ContactInfo = ({ icon: Icon, title, content }) => (
+  <div className="flex items-start">
+    <Icon className="text-3xl text-orange-500 mt-1" />
+    <div className="ml-4">
+      <h3 className="text-2xl font-medium text-gray-800">{title}</h3>
+      <p className="text-lg mt-1 text-gray-600">{content}</p>
+    </div>
+  </div>
+);
+
+const ContactForm = () => (
+  <form className="space-y-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <input 
+        type="text" 
+        placeholder="First Name" 
+        className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500"
+      />
+      <input 
+        type="text" 
+        placeholder="Last Name" 
+        className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500"
+      />
+    </div>
+    <input 
+      type="email" 
+      placeholder="Email Address" 
+      className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500"
+    />
+    <textarea 
+      placeholder="Your Message" 
+      rows={4} 
+      className="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500"
+    />
+    <button 
+      type="submit" 
+      className="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors duration-300"
+    >
+      Send Message
+    </button>
+  </form>
+);
 
 const Contact = () => {
+  const contactDetails = [
+    { icon: MdLocationPin, title: "Address", content: "Newroad, Bishal Bazzar" },
+    { icon: FaPhoneAlt, title: "Phone Number", content: "9841266010" },
+    { icon: MdEmail, title: "E-Mail", content: "GamerGaun@gmail.com" },
+  ];
+
   return (
-    <div className="container w-[100%]">
-
-    <div className="up-container w-full mx-auto ">
-      <h1 className="text-4xl font-bold text-center  ">Contact Us</h1>
-      <h5 className="text-1xl font-normal text-gray-700 shadow-xl w-6/12 mx-auto h-15 rounded-md ">
-      Need help? Reach out via the contact form below or contact us by email or phone. We’re available during business hours to assist you.
-      </h5>
-
-    </div>
-    <div className="mid-container bg-gray-200">
-      <div className="box flex font-serif">
-        <div className="left w-[50%] text-3xl">
-          <span className="text-3xl font-bold ">Get in Touch </span>
-          <p className="sa text-2xl ">Reach us by email, phone, or the form below. We’re here to help!</p>
-          <div className="loc flex ">
-          <MdLocationPin className="mt-2" /> <span className="ml-2 w-0">Address</span>
-        <p className="text-lg mt-10">123 Main St, City, ST 12345</p>
-          </div>
-          <div className="phone flex mt-3">
-          <FaPhoneAlt className="img mt-2"/> <span className="w-100 ml-5 ">Phone Number
-          <p className="text-lg mt-1 mr-5">9841266010</p>
-          </span>
-          </div>
-          <div className="phone flex mt-3">
-          <MdEmail className="img mt-2"/> <span className="w-100 ml-5 ">E-Mail
-          <p className="text-lg mt-1 mr-5">GamerGaun@gmail.com</p>
-          </span>
-          </div>
-
-          </div>
-        <div className="right ml-5 w-[50%]">
-          <div className="box shadow-2xl "></div>
-
+    <div className="container mx-auto px-4">
+      {/* Header Section */}
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold text-center mb-4">Contact Us</h1>
+        <div className="text-xl text-gray-700 shadow-lg max-w-4xl mx-auto rounded-full px-8 py-5 leading-relaxed text-center bg-white">
+          Need help? Reach out via the contact form below or contact us by email or phone. 
+          We're available during business hours to assist you.
         </div>
       </div>
-      
-    </div>
+
+      {/* Main Content Section */}
+      <div className="bg-gray-100 mt-4 p-8 min-h-[75vh] rounded-t-3xl">
+
+        <div className="flex flex-wrap gap-12">
+          {/* Left Column - Contact Information */}
+          <div className="flex-1 min-w-[300px]">
+            <h2 className="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+            <p className="text-xl mb-8 text-gray-600">
+              Reach us by email, phone, or the form below. We're here to help!
+            </p>
+            
+            <div className="space-y-8">
+              {contactDetails.map((detail, index) => (
+                <ContactInfo key={index} {...detail} />
+              ))}
+            </div>
+          </div>
+
+          {/* Right Column - Contact Form */}
+          <div className="flex-1 min-w-[300px]">
+            <div className="bg-white rounded-xl p-8 shadow-xl">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800">Send us a message</h2>
+              <ContactForm />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
